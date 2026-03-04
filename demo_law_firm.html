@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayshore Legal Group — Personal Injury, Family Law & Estate Planning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1E293B;
+            --primary-light: #334155;
+            --accent: #A78BFA;
+            --accent-hover: #8B5CF6;
+            --gold: #D4A853;
+            --bg: #F8FAFC;
+            --surface: #FFFFFF;
+            --text: #1A2332;
+            --muted: #5A6B80;
+            --success: #22C55E;
+            --radius: 16px;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { background: var(--primary); color: #fff; padding: 0 24px; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .logo { font-weight: 800; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+        .nav-info { display: flex; gap: 24px; font-size: 0.85rem; }
+        .nav-info a { color: rgba(255,255,255,0.85); text-decoration: none; }
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #fff; padding: 70px 24px 90px; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 620px; margin: 0 auto 24px; }
+        .hero .phone { font-size: 1.4rem; font-weight: 700; margin: 20px 0; }
+        .hero .phone a { color: var(--gold); text-decoration: none; }
+        .btn-hero { display: inline-block; padding: 14px 32px; border-radius: 100px; background: var(--gold); color: var(--primary); font-weight: 700; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 20px rgba(212,168,83,0.3); transition: transform 0.2s; }
+        .btn-hero:hover { transform: translateY(-2px); }
+        .free-consult { display: inline-block; margin-top: 16px; padding: 8px 20px; border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.3); color: #fff; font-size: 0.9rem; font-weight: 500; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .practice-areas { padding: 60px 0; }
+        .practice-areas h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; }
+        .pa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .pa-card { background: var(--surface); border-radius: var(--radius); padding: 32px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-top: 4px solid var(--accent); transition: transform 0.2s; }
+        .pa-card:hover { transform: translateY(-4px); }
+        .pa-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .pa-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+        .pa-card .tagline { color: var(--accent-hover); font-weight: 600; font-size: 0.85rem; margin-bottom: 12px; }
+        .pa-card p { font-size: 0.88rem; color: var(--muted); margin-bottom: 16px; }
+        .pa-card ul { list-style: none; }
+        .pa-card li { padding: 4px 0; font-size: 0.85rem; color: var(--muted); }
+        .pa-card li::before { content: '• '; color: var(--accent); font-weight: 700; }
+        .pa-card .consult { margin-top: 16px; padding: 8px 16px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; display: inline-block; }
+        .pa-card .consult.free { background: rgba(34,197,94,0.1); color: var(--success); }
+        .pa-card .consult.paid { background: rgba(167,139,250,0.1); color: var(--accent-hover); }
+
+        .why-us { padding: 60px 0; background: var(--surface); }
+        .why-us h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .why-card { text-align: center; padding: 24px; }
+        .why-card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .why-card h4 { font-weight: 700; margin-bottom: 6px; }
+        .why-card p { font-size: 0.85rem; color: var(--muted); }
+
+        .hours-section { padding: 60px 0; }
+        .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto; }
+        .hours-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 20px; grid-column: 1 / -1; text-align: center; }
+        .hours-table { width: 100%; }
+        .hours-table td { padding: 8px 0; font-size: 0.92rem; }
+        .hours-table td:first-child { font-weight: 600; }
+        .hours-table td:last-child { text-align: right; color: var(--muted); }
+        .location-info h3 { font-weight: 700; margin-bottom: 12px; }
+        .location-info p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+
+        .cta-banner { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; padding: 48px 24px; text-align: center; }
+        .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+        .cta-banner p { opacity: 0.9; margin-bottom: 20px; }
+
+        .ai-badge { position: fixed; bottom: 24px; right: 24px; z-index: 1000; background: var(--primary); color: #fff; padding: 12px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; animation: pulse 2s ease-in-out infinite; }
+        .ai-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } 50% { box-shadow: 0 4px 30px rgba(30,41,59,0.4); } }
+
+        .widget-area { position: fixed; bottom: 24px; left: 24px; z-index: 999; }
+        .widget-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--gold); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 20px rgba(212,168,83,0.4); transition: transform 0.2s; }
+        .widget-btn:hover { transform: scale(1.1); }
+        .widget-popup { display: none; position: absolute; bottom: 72px; left: 0; background: var(--surface); border-radius: 16px; padding: 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 320px; }
+        .widget-popup.open { display: block; }
+        .widget-popup h4 { font-size: 1rem; margin-bottom: 8px; }
+        .widget-popup p { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+
+        footer { padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+        @media (max-width: 768px) { .pa-grid { grid-template-columns: 1fr; } .hours-grid { grid-template-columns: 1fr; } .nav-info { display: none; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">⚖️ Bayshore Legal Group</div>
+        <div class="nav-info">
+            <a href="tel:+19415550412">📞 (941) 555-0412</a>
+            <a href="#">Free Injury Consultation</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>When It Matters Most,<br>You Need the Right Attorney.</h1>
+    <p>Personal injury, family law, and estate planning. Sarasota attorneys who fight for you — and treat you like family.</p>
+    <div class="phone">📞 <a href="tel:+19415550412">(941) 555-0412</a></div>
+    <a href="tel:+19415550412" class="btn-hero">Free Consultation</a>
+    <div><span class="free-consult">Injured? No fee unless we win.</span></div>
+</section>
+
+<section class="container practice-areas">
+    <h2>Our Practice Areas</h2>
+    <div class="pa-grid">
+        <div class="pa-card">
+            <div class="icon">🚗</div>
+            <h3>Personal Injury</h3>
+            <div class="tagline">No Fee Unless We Win</div>
+            <p>Hurt in an accident? Insurance lowballing you? We fight for the compensation you deserve.</p>
+            <ul>
+                <li>Car, motorcycle & truck accidents</li>
+                <li>Slip and fall / premises liability</li>
+                <li>Dog bites</li>
+                <li>Wrongful death</li>
+            </ul>
+            <span class="consult free">✓ Free Consultation</span>
+        </div>
+        <div class="pa-card">
+            <div class="icon">👨‍👩‍👧</div>
+            <h3>Family Law</h3>
+            <div class="tagline">Protecting Your Family's Future</div>
+            <p>Divorce, custody, support — we guide you through life's toughest transitions with compassion and clarity.</p>
+            <ul>
+                <li>Divorce & separation</li>
+                <li>Child custody & support</li>
+                <li>Alimony modification</li>
+                <li>Domestic violence / restraining orders</li>
+            </ul>
+            <span class="consult paid">$150 Initial Consultation</span>
+        </div>
+        <div class="pa-card">
+            <div class="icon">📜</div>
+            <h3>Estate Planning</h3>
+            <div class="tagline">Secure Your Legacy</div>
+            <p>Wills, trusts, and powers of attorney. Make sure your wishes are honored and your family is protected.</p>
+            <ul>
+                <li>Wills & trusts</li>
+                <li>Power of attorney</li>
+                <li>Healthcare directives</li>
+                <li>Probate & trust administration</li>
+            </ul>
+            <span class="consult paid">$200 Initial Consultation</span>
+        </div>
+    </div>
+</section>
+
+<section class="why-us">
+    <h2>Why Bayshore Legal?</h2>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="icon">🏆</div>
+            <h4>25+ Years Experience</h4>
+            <p>Decades of courtroom and negotiation success in Southwest Florida.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">🤝</div>
+            <h4>Personal Attention</h4>
+            <p>You talk to your attorney — not a paralegal. We know your name and your case.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">💰</div>
+            <h4>Results-Driven</h4>
+            <p>$50M+ recovered for injury clients. We don't settle for less than you deserve.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">📞</div>
+            <h4>Always Available</h4>
+            <p>Our AI receptionist answers 24/7. Your case doesn't wait for business hours.</p>
+        </div>
+    </div>
+</section>
+
+<section class="hours-section">
+    <div class="container">
+        <div class="hours-grid">
+            <h2>Hours & Location</h2>
+            <div>
+                <table class="hours-table">
+                    <tr><td>Monday – Friday</td><td>8:30 AM – 5:30 PM</td></tr>
+                    <tr><td>Saturday</td><td>By appointment</td></tr>
+                    <tr><td>Sunday</td><td>Closed</td></tr>
+                </table>
+                <p style="margin-top:16px;color:var(--muted);font-size:0.88rem;">
+                    After hours? <strong>Our AI receptionist Lisa answers 24/7.</strong> Schedule consultations, leave messages for your attorney, or get immediate help in urgent situations.
+                </p>
+            </div>
+            <div class="location-info">
+                <h3>📍 Find Us</h3>
+                <p>321 Ringling Blvd, Suite 200<br>Sarasota, FL 34236</p>
+                <p>📞 <a href="tel:+19415550412" style="color:var(--primary);font-weight:600;text-decoration:none;">(941) 555-0412</a></p>
+                <p>📧 info@bayshorelegal.com</p>
+                <p>🌐 bayshorelegal.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <h2>Injured? Don't Wait. Don't Settle.</h2>
+    <p>Every day you wait, evidence disappears and deadlines get closer. Call now for a free, no-obligation consultation.</p>
+    <a href="tel:+19415550412" class="btn-hero">Get Your Free Case Review</a>
+</section>
+
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Lisa — AI Receptionist">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Lisa</h4>
+        <p>Our AI receptionist can schedule consultations, connect you with the right attorney, and handle urgent situations — right from your browser.</p>
+        <elevenlabs-convai agent-id="AGENT_ID_PLACEHOLDER"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Receptionist Active 24/7
+</div>
+
+<footer>
+    <p>© 2026 Bayshore Legal Group · Sarasota, FL · Powered by <a href="landing.html" style="color:var(--primary);font-weight:600;">Etheus Voice</a></p>
+</footer>
+
+<script>
+function toggleWidget() { document.getElementById('widgetPopup').classList.toggle('open'); }
+document.addEventListener('click', function(e) { if (!e.target.closest('.widget-area')) document.getElementById('widgetPopup').classList.remove('open'); });
+</script>
+</body>
+</html>

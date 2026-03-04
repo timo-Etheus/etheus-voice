@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine Dental Sarasota — Your Smile, Our Priority</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0891B2;
+            --primary-dark: #0E7490;
+            --primary-light: #22D3EE;
+            --accent: #F59E0B;
+            --bg: #F0FDFA;
+            --surface: #FFFFFF;
+            --text: #134E4A;
+            --muted: #5B8A86;
+            --success: #22C55E;
+            --radius: 16px;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        nav { background: var(--surface); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 0 24px; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .logo { font-weight: 800; font-size: 1.2rem; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta { background: var(--primary); color: #fff; padding: 8px 20px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+
+        .hero { padding: 80px 24px 60px; text-align: center; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(8,145,178,0.08), transparent 70%); }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 16px; color: var(--text); }
+        .hero .sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 32px; }
+        .hero .phone { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .hero .phone a { color: var(--primary); text-decoration: none; }
+        .hero .hours { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+
+        .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border-radius: 100px; font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: none; transition: transform 0.2s; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+
+        .services { padding: 60px 0; }
+        .services h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px; }
+        .srv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .srv-card { background: var(--surface); border-radius: var(--radius); padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .srv-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .srv-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+        .srv-card p { color: var(--muted); font-size: 0.88rem; }
+
+        .why { padding: 60px 0; }
+        .why h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px; }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .why-card { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border-radius: var(--radius); padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .why-card .num { background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+        .why-card h4 { font-size: 1rem; margin-bottom: 4px; }
+        .why-card p { color: var(--muted); font-size: 0.88rem; }
+
+        .insurance { padding: 60px 0; text-align: center; }
+        .insurance h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 16px; }
+        .insurance p { color: var(--muted); max-width: 600px; margin: 0 auto 32px; }
+        .insurance-logos { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+        .ins-logo { background: var(--surface); padding: 16px 28px; border-radius: 12px; font-weight: 700; color: var(--muted); font-size: 0.9rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+
+        .team { padding: 60px 0; text-align: center; }
+        .team h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px; }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .team-card { background: var(--surface); border-radius: var(--radius); padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .team-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; }
+        .team-card h4 { font-size: 1rem; margin-bottom: 4px; }
+        .team-card .role { color: var(--primary); font-size: 0.82rem; font-weight: 600; margin-bottom: 8px; }
+        .team-card p { color: var(--muted); font-size: 0.85rem; }
+
+        .cta-section { padding: 80px 24px; text-align: center; background: linear-gradient(180deg, transparent, rgba(8,145,178,0.04)); }
+        .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 12px; }
+        .cta-section p { color: var(--muted); margin-bottom: 28px; }
+
+        footer { padding: 40px 24px; text-align: center; color: var(--muted); font-size: 0.78rem; border-top: 1px solid rgba(0,0,0,0.06); }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        /* Widget */
+        .widget-area { position: fixed; bottom: 24px; right: 24px; z-index: 1000; }
+        .widget-btn { width: 64px; height: 64px; border-radius: 50%; background: var(--primary); color: #fff; border: none; font-size: 1.6rem; cursor: pointer; box-shadow: 0 4px 20px rgba(8,145,178,0.3); transition: transform 0.2s; }
+        .widget-btn:hover { transform: scale(1.1); }
+        .widget-popup { display: none; position: absolute; bottom: 80px; right: 0; width: 360px; background: var(--surface); border-radius: 20px; padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+        .widget-popup.open { display: block; }
+        .widget-popup h4 { font-size: 1rem; margin-bottom: 8px; }
+        .widget-popup p { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+
+        .ai-badge { position: fixed; bottom: 24px; left: 24px; background: var(--surface); padding: 8px 16px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; color: var(--primary); box-shadow: 0 2px 12px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 8px; z-index: 100; }
+        .ai-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        @media (max-width: 768px) {
+            .srv-grid, .team-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .widget-popup { width: calc(100vw - 48px); right: -12px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">Sunshine <span>Dental</span></div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#team">Our Team</a>
+            <a href="#insurance">Insurance</a>
+            <a href="tel:+19415550123" class="nav-cta">📞 (941) 555-0123</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <h1>Your Smile Deserves the Best Care in Sarasota</h1>
+        <p class="sub">From routine cleanings to cosmetic makeovers, Sunshine Dental has served Sarasota families for over 15 years with compassionate, modern dentistry.</p>
+        <p class="phone">📞 <a href="tel:+19415550123">(941) 555-0123</a></p>
+        <p class="hours">Mon–Fri: 8am–5pm · Sat: 9am–1pm · Sun: Closed</p>
+        <div class="cta-row">
+            <a href="#" class="btn btn-primary" onclick="toggleWidget(); return false;">🎙️ Talk to Sarah (AI)</a>
+            <a href="tel:+19415550123" class="btn btn-outline">📞 Call Now</a>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="container services">
+    <h2>Our Services</h2>
+    <div class="srv-grid">
+        <div class="srv-card">
+            <div class="icon">🦷</div>
+            <h3>Preventive Care</h3>
+            <p>Cleanings, exams, X-rays, fluoride treatments, and sealants to keep your smile healthy.</p>
+        </div>
+        <div class="srv-card">
+            <div class="icon">✨</div>
+            <h3>Cosmetic Dentistry</h3>
+            <p>Teeth whitening, veneers, bonding, and smile makeovers for the look you've always wanted.</p>
+        </div>
+        <div class="srv-card">
+            <div class="icon">🔧</div>
+            <h3>Restorative</h3>
+            <p>Fillings, crowns, bridges, and implants to restore function and beauty to your smile.</p>
+        </div>
+        <div class="srv-card">
+            <div class="icon">😬</div>
+            <h3>Emergency Care</h3>
+            <p>Same-day appointments for dental emergencies. Toothaches, broken teeth, lost fillings — we're here.</p>
+        </div>
+        <div class="srv-card">
+            <div class="icon">👶</div>
+            <h3>Pediatric Dentistry</h3>
+            <p>Gentle, fun dental care for kids. We make their first visits a positive experience.</p>
+        </div>
+        <div class="srv-card">
+            <div class="icon">😴</div>
+            <h3>Sedation Options</h3>
+            <p>Anxious about the dentist? Nitrous oxide and oral sedation available for a comfortable visit.</p>
+        </div>
+    </div>
+</section>
+
+<section class="container why" id="why">
+    <h2>Why Sarasota Chooses Sunshine</h2>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="num">1</div>
+            <div>
+                <h4>15+ Years of Experience</h4>
+                <p>Dr. Martinez and our team have been caring for Sarasota smiles since 2010.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="num">2</div>
+            <div>
+                <h4>Latest Technology</h4>
+                <p>Digital X-rays, intraoral cameras, and same-day crowns with CEREC technology.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="num">3</div>
+            <div>
+                <h4>24/7 AI Receptionist</h4>
+                <p>Our AI assistant Sarah answers calls anytime — nights, weekends, holidays. Never miss a patient.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="num">4</div>
+            <div>
+                <h4>Bilingual Staff</h4>
+                <p>Hablamos español. Comfortable care for our Spanish-speaking community members.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container insurance" id="insurance">
+    <h2>Insurance & Payment</h2>
+    <p>We accept most major insurance plans and offer flexible payment options including CareCredit.</p>
+    <div class="insurance-logos">
+        <div class="ins-logo">Delta Dental</div>
+        <div class="ins-logo">Cigna</div>
+        <div class="ins-logo">MetLife</div>
+        <div class="ins-logo">Aetna</div>
+        <div class="ins-logo">Guardian</div>
+        <div class="ins-logo">CareCredit</div>
+    </div>
+</section>
+
+<section class="container team" id="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-avatar">👨‍⚕️</div>
+            <h4>Dr. Carlos Martinez</h4>
+            <div class="role">Lead Dentist, DDS</div>
+            <p>UF College of Dentistry graduate. Specializes in cosmetic and restorative dentistry.</p>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">👩‍⚕️</div>
+            <h4>Dr. Lisa Chen</h4>
+            <div class="role">Associate Dentist, DMD</div>
+            <p>Expert in pediatric and preventive care. Patients love her gentle approach.</p>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">🤖</div>
+            <h4>Sarah</h4>
+            <div class="role">AI Receptionist — 24/7</div>
+            <p>Handles calls, books appointments, and answers questions anytime you need her. Try her now!</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready for Your Best Smile?</h2>
+        <p>New patients welcome. Talk to Sarah now or call us to schedule your first visit.</p>
+        <div class="cta-row">
+            <a href="#" class="btn btn-primary" onclick="toggleWidget(); return false;">🎙️ Talk to Sarah</a>
+            <a href="tel:+19415550123" class="btn btn-outline">📞 (941) 555-0123</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Sunshine Dental Sarasota · 4567 Main St, Sarasota, FL 34236 · Powered by <a href="landing.html">Etheus Voice</a></p>
+</footer>
+
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Sarah — AI Receptionist">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Sarah</h4>
+        <p>Our AI receptionist can book appointments, answer questions about services, and help with dental emergencies — 24/7.</p>
+        <elevenlabs-convai agent-id="agent_4701khxtecx0ez2a48v23ckn4nnz"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Receptionist Active 24/7
+</div>
+
+<script>
+function toggleWidget() {
+    document.getElementById('widgetPopup').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.widget-area')) {
+        document.getElementById('widgetPopup').classList.remove('open');
+    }
+});
+</script>
+
+</body>
+</html>

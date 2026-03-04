@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SunCoast Comfort Services — HVAC & Plumbing, Sarasota FL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #B45309;
+            --primary-light: #D97706;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --bg: #FFFBF5;
+            --surface: #FFFFFF;
+            --text: #1A2332;
+            --muted: #5A6B80;
+            --success: #22C55E;
+            --danger: #EF4444;
+            --radius: 16px;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { background: var(--primary); color: #fff; padding: 0 24px; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .logo { font-weight: 800; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+        .nav-info { display: flex; gap: 24px; font-size: 0.85rem; }
+        .nav-info a { color: rgba(255,255,255,0.85); text-decoration: none; }
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #fff; padding: 60px 24px 80px; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 24px; }
+        .hero .phone { font-size: 1.4rem; font-weight: 700; margin: 20px 0; }
+        .hero .phone a { color: #FDE68A; text-decoration: none; }
+        .btn-hero { display: inline-block; padding: 14px 32px; border-radius: 100px; background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 20px rgba(37,99,235,0.3); transition: transform 0.2s; }
+        .btn-hero:hover { transform: translateY(-2px); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .services { padding: 60px 0; }
+        .services h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 8px; }
+        .services .sub { text-align: center; color: var(--muted); margin-bottom: 32px; }
+        .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .svc-card { background: var(--surface); border-radius: var(--radius); padding: 28px 24px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s; }
+        .svc-card:hover { transform: translateY(-4px); }
+        .svc-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+        .svc-card p { font-size: 0.85rem; color: var(--muted); }
+        .svc-card .price { color: var(--primary); font-weight: 700; font-size: 0.9rem; margin-top: 8px; }
+
+        .membership { padding: 60px 0; background: var(--surface); }
+        .membership h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; }
+        .member-card { max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #FFF7ED, #FEF3C7); border: 2px solid #FBBF24; border-radius: var(--radius); padding: 36px; text-align: center; }
+        .member-card h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 4px; }
+        .member-card .price { font-size: 2rem; font-weight: 800; color: var(--primary); margin: 12px 0; }
+        .member-card .price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+        .member-card ul { list-style: none; text-align: left; max-width: 400px; margin: 16px auto; }
+        .member-card li { padding: 6px 0; font-size: 0.92rem; }
+        .member-card li::before { content: '⭐ '; }
+
+        .hours-section { padding: 60px 0; }
+        .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto; }
+        .hours-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 20px; grid-column: 1 / -1; text-align: center; }
+        .hours-table { width: 100%; }
+        .hours-table td { padding: 8px 0; font-size: 0.92rem; }
+        .hours-table td:first-child { font-weight: 600; }
+        .hours-table td:last-child { text-align: right; color: var(--muted); }
+        .location-info h3 { font-weight: 700; margin-bottom: 12px; }
+        .location-info p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+
+        .cta-banner { background: linear-gradient(135deg, #DC2626, #EF4444); color: #fff; padding: 48px 24px; text-align: center; }
+        .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+        .cta-banner p { opacity: 0.9; margin-bottom: 20px; }
+
+        .ai-badge { position: fixed; bottom: 24px; right: 24px; z-index: 1000; background: var(--primary); color: #fff; padding: 12px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; animation: pulse 2s ease-in-out infinite; }
+        .ai-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } 50% { box-shadow: 0 4px 30px rgba(180,83,9,0.4); } }
+
+        .widget-area { position: fixed; bottom: 24px; left: 24px; z-index: 999; }
+        .widget-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 20px rgba(37,99,235,0.4); transition: transform 0.2s; }
+        .widget-btn:hover { transform: scale(1.1); }
+        .widget-popup { display: none; position: absolute; bottom: 72px; left: 0; background: var(--surface); border-radius: 16px; padding: 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 320px; }
+        .widget-popup.open { display: block; }
+        .widget-popup h4 { font-size: 1rem; margin-bottom: 8px; }
+        .widget-popup p { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+
+        footer { padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+        @media (max-width: 768px) { .hours-grid { grid-template-columns: 1fr; } .nav-info { display: none; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">🌡️ SunCoast Comfort Services</div>
+        <div class="nav-info">
+            <a href="tel:+19415550378">📞 (941) 555-0378</a>
+            <a href="#">24/7 Emergency Service</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Your Comfort is Our Business.<br>HVAC & Plumbing Experts.</h1>
+    <p>Sarasota & Manatee County's trusted home comfort specialists. Same-day service, honest pricing, and 24/7 emergency dispatch.</p>
+    <div class="phone">📞 <a href="tel:+19415550378">(941) 555-0378</a></div>
+    <a href="tel:+19415550378" class="btn-hero">Schedule Service Today</a>
+</section>
+
+<section class="container services">
+    <h2>HVAC Services</h2>
+    <p class="sub">Keep your Florida home cool and comfortable.</p>
+    <div class="svc-grid">
+        <div class="svc-card">
+            <div class="icon">❄️</div>
+            <h3>A/C Tune-Up</h3>
+            <p>Full system inspection. Prevent breakdowns before summer hits.</p>
+            <div class="price">$89 (Free w/ Comfort Club)</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🔍</div>
+            <h3>A/C Repair</h3>
+            <p>Not cooling? Strange noises? We diagnose and fix it fast.</p>
+            <div class="price">$89 diagnostic (waived w/ repair)</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🏠</div>
+            <h3>New A/C Install</h3>
+            <p>Energy-efficient systems. Free in-home estimate. Financing available.</p>
+            <div class="price">Free Estimate</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🌬️</div>
+            <h3>Duct Cleaning</h3>
+            <p>Remove dust, allergens, and mold from your ductwork.</p>
+            <div class="price">From $299</div>
+        </div>
+    </div>
+</section>
+
+<section class="container services" style="padding-top:0;">
+    <h2>Plumbing Services</h2>
+    <p class="sub">From drips to disasters — we've got you covered.</p>
+    <div class="svc-grid">
+        <div class="svc-card">
+            <div class="icon">🚿</div>
+            <h3>Drain Clearing</h3>
+            <p>Clogged drains and main lines cleared fast.</p>
+            <div class="price">From $149</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🔥</div>
+            <h3>Water Heater</h3>
+            <p>Repair or replacement. Tank and tankless options.</p>
+            <div class="price">Repair from $89 + parts</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">💧</div>
+            <h3>Leak Detection</h3>
+            <p>Find hidden leaks before they cause damage.</p>
+            <div class="price">$149</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🔧</div>
+            <h3>Repiping</h3>
+            <p>Old pipes? We replace entire home plumbing systems.</p>
+            <div class="price">Free Estimate</div>
+        </div>
+    </div>
+</section>
+
+<section class="membership">
+    <h2>Save with the Comfort Club</h2>
+    <div class="member-card">
+        <h3>☀️ Comfort Club Membership</h3>
+        <div class="price">$14.95<span>/mo</span></div>
+        <p style="color:var(--muted);font-size:0.9rem;">or $149/year — saves you hundreds</p>
+        <ul>
+            <li>2 A/C tune-ups per year</li>
+            <li>1 annual plumbing inspection</li>
+            <li>15% off all repairs</li>
+            <li>Priority scheduling</li>
+            <li>No after-hours dispatch fees ($89 value)</li>
+            <li>Transferable if you sell your home</li>
+        </ul>
+    </div>
+</section>
+
+<section class="hours-section">
+    <div class="container">
+        <div class="hours-grid">
+            <h2>Hours & Service Area</h2>
+            <div>
+                <table class="hours-table">
+                    <tr><td>Monday – Friday</td><td>7:00 AM – 6:00 PM</td></tr>
+                    <tr><td>Saturday</td><td>8:00 AM – 2:00 PM</td></tr>
+                    <tr><td>Sunday</td><td>Emergency Only</td></tr>
+                    <tr><td style="color:var(--danger);font-weight:700">Emergency</td><td style="text-align:right;color:var(--danger);font-weight:700">24/7 ($89 dispatch)</td></tr>
+                </table>
+                <p style="margin-top:16px;color:var(--muted);font-size:0.88rem;">
+                    After hours? <strong>Our AI receptionist Mike answers 24/7.</strong> Book service, report emergencies, or ask about pricing — any time.
+                </p>
+            </div>
+            <div class="location-info">
+                <h3>📍 Service Area</h3>
+                <p>Sarasota · Bradenton · Lakewood Ranch<br>Siesta Key · Longboat Key · Venice · North Port</p>
+                <p>📞 <a href="tel:+19415550378" style="color:var(--primary);font-weight:600;text-decoration:none;">(941) 555-0378</a></p>
+                <p>📧 service@suncoastcomfort.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <h2>🚨 No A/C? Burst Pipe? Gas Smell?</h2>
+    <p>Call now — our AI assistant will dispatch a technician to you immediately. Available 24/7, even on holidays.</p>
+    <a href="tel:+19415550378" class="btn-hero" style="background:#fff;color:#DC2626;">Call Emergency Line Now</a>
+</section>
+
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Mike — AI Receptionist">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Mike</h4>
+        <p>Our AI receptionist can book service, answer pricing questions, and dispatch emergency techs — right from your browser.</p>
+        <elevenlabs-convai agent-id="AGENT_ID_PLACEHOLDER"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Receptionist Active 24/7
+</div>
+
+<footer>
+    <p>© 2026 SunCoast Comfort Services · Sarasota, FL · Powered by <a href="landing.html" style="color:var(--primary);font-weight:600;">Etheus Voice</a></p>
+</footer>
+
+<script>
+function toggleWidget() { document.getElementById('widgetPopup').classList.toggle('open'); }
+document.addEventListener('click', function(e) { if (!e.target.closest('.widget-area')) document.getElementById('widgetPopup').classList.remove('open'); });
+</script>
+</body>
+</html>

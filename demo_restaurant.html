@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Napoli's Italian Kitchen — Sarasota's Favorite Italian Restaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #8B1A1A;
+            --primary-light: #A52A2A;
+            --accent: #D4A843;
+            --accent-hover: #C4982F;
+            --cream: #FFF8F0;
+            --surface: #FFFFFF;
+            --text: #2D1810;
+            --muted: #6B5B50;
+            --success: #22C55E;
+            --radius: 16px;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        /* NAV */
+        nav { background: var(--primary); color: #fff; padding: 0 24px; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .nav-links { display: flex; gap: 20px; align-items: center; font-size: 0.85rem; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-order { background: var(--accent); color: var(--primary); padding: 8px 20px; border-radius: 100px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: transform 0.2s; display: inline-block; }
+        .nav-order:hover { transform: translateY(-1px); }
+
+        /* HERO */
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #5C1010 100%); color: #fff; padding: 70px 24px 90px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(212,168,67,0.1) 0%, transparent 70%); }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.4rem); margin-bottom: 16px; line-height: 1.15; }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 24px; }
+        .hero .phone { font-size: 1.4rem; font-weight: 700; margin: 20px 0; }
+        .hero .phone a { color: var(--accent); text-decoration: none; }
+        .btn-hero { display: inline-block; padding: 14px 32px; border-radius: 100px; background: var(--accent); color: var(--primary); font-weight: 700; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 20px rgba(212,168,67,0.3); transition: transform 0.2s; }
+        .btn-hero:hover { transform: translateY(-2px); }
+        .hero-sub { display: inline-block; margin-top: 16px; padding: 8px 20px; border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.9); font-size: 0.88rem; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* MENU SECTION */
+        .menu { padding: 60px 0; }
+        .menu h2 { font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 8px; }
+        .menu .sub { text-align: center; color: var(--muted); margin-bottom: 32px; font-size: 0.95rem; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .menu-card { background: var(--surface); border-radius: var(--radius); padding: 32px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-top: 4px solid var(--primary); }
+        .menu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 4px; color: var(--primary); }
+        .menu-card .tagline { color: var(--accent-hover); font-weight: 600; font-size: 0.82rem; margin-bottom: 16px; }
+        .menu-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed rgba(0,0,0,0.08); font-size: 0.92rem; }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item .name { color: var(--text); }
+        .menu-item .name small { color: var(--muted); font-size: 0.8rem; display: block; }
+        .menu-item .price { color: var(--primary); font-weight: 700; white-space: nowrap; margin-left: 16px; }
+
+        /* FEATURES */
+        .features { padding: 60px 0; background: var(--surface); }
+        .features h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; }
+        .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .feat-card { text-align: center; padding: 24px; }
+        .feat-card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .feat-card h4 { font-weight: 700; margin-bottom: 6px; }
+        .feat-card p { font-size: 0.85rem; color: var(--muted); }
+
+        /* HOURS */
+        .hours-section { padding: 60px 0; }
+        .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto; }
+        .hours-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 20px; grid-column: 1 / -1; text-align: center; }
+        .hours-table { width: 100%; }
+        .hours-table td { padding: 8px 0; font-size: 0.92rem; }
+        .hours-table td:first-child { font-weight: 600; }
+        .hours-table td:last-child { text-align: right; color: var(--muted); }
+        .hours-table tr.closed td { color: var(--primary); }
+        .location-info h3 { font-weight: 700; margin-bottom: 12px; }
+        .location-info p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+
+        /* CTA */
+        .cta-banner { background: linear-gradient(135deg, var(--primary), #5C1010); color: #fff; padding: 48px 24px; text-align: center; }
+        .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+        .cta-banner p { opacity: 0.9; margin-bottom: 20px; }
+
+        /* REVIEW */
+        .review { padding: 60px 0; text-align: center; }
+        .review-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 24px auto 0; }
+        .review-card { background: var(--surface); border-radius: var(--radius); padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: left; }
+        .review-card .stars { color: var(--accent); margin-bottom: 8px; }
+        .review-card p { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+        .review-card .author { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+        /* AI BADGE */
+        .ai-badge { position: fixed; bottom: 24px; right: 24px; z-index: 1000; background: var(--primary); color: #fff; padding: 12px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; animation: pulse 2s ease-in-out infinite; }
+        .ai-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } 50% { box-shadow: 0 4px 30px rgba(139,26,26,0.4); } }
+
+        /* WIDGET */
+        .widget-area { position: fixed; bottom: 24px; left: 24px; z-index: 999; }
+        .widget-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 20px rgba(212,168,67,0.4); transition: transform 0.2s; }
+        .widget-btn:hover { transform: scale(1.1); }
+        .widget-popup { display: none; position: absolute; bottom: 72px; left: 0; background: var(--surface); border-radius: 16px; padding: 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 320px; }
+        .widget-popup.open { display: block; }
+        .widget-popup h4 { font-size: 1rem; margin-bottom: 8px; }
+        .widget-popup p { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+
+        footer { padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        @media (max-width: 768px) { .hours-grid { grid-template-columns: 1fr; } .nav-links { display: none; } .menu-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">🍝 Napoli's Italian Kitchen</div>
+        <div class="nav-links">
+            <a href="#menu">Menu</a>
+            <a href="#hours">Hours</a>
+            <a href="tel:+19415550287">📞 (941) 555-0287</a>
+            <a href="tel:+19415550287" class="nav-order">Order Now</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Real Italian. <em>Made with Love.</em><br>Since 1998.</h1>
+    <p>Family recipes from Naples, made fresh daily in Sarasota. Dine in, take out, or call ahead — our AI hostess Sofia takes your order 24/7.</p>
+    <div class="phone">📞 <a href="tel:+19415550287">(941) 555-0287</a></div>
+    <a href="tel:+19415550287" class="btn-hero">🍕 Order Takeout</a>
+    <div><span class="hero-sub">⭐ 4.8 stars · 1,200+ reviews on Google</span></div>
+</section>
+
+<section id="menu" class="container menu">
+    <h2>Our Menu</h2>
+    <p class="sub">Handmade pasta, wood-fired pizza, and grandma's secret recipes.</p>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <h3>🍕 Pizza</h3>
+            <div class="tagline">Hand-tossed, wood-fired</div>
+            <div class="menu-item"><span class="name">Margherita<small>San Marzano, fresh mozz, basil</small></span><span class="price">$13.95 / $19.95</span></div>
+            <div class="menu-item"><span class="name">Pepperoni<small>Classic. Enough said.</small></span><span class="price">$14.95 / $21.95</span></div>
+            <div class="menu-item"><span class="name">Meat Lovers<small>Pepperoni, sausage, bacon, ham</small></span><span class="price">$16.95 / $24.95</span></div>
+            <div class="menu-item"><span class="name">Veggie Supreme<small>Mushroom, pepper, onion, olive</small></span><span class="price">$15.95 / $22.95</span></div>
+            <div class="menu-item"><span class="name">White Pizza<small>Ricotta, mozz, garlic, EVOO</small></span><span class="price">$14.95 / $21.95</span></div>
+            <div class="menu-item"><span class="name">Build Your Own</span><span class="price">$12.95 / $18.95</span></div>
+        </div>
+        <div class="menu-card">
+            <h3>🍝 Pasta</h3>
+            <div class="tagline">Includes bread & side salad</div>
+            <div class="menu-item"><span class="name">Spaghetti & Meatballs<small>Grandma's recipe since '98</small></span><span class="price">$16.95</span></div>
+            <div class="menu-item"><span class="name">Chicken Parmesan<small>Breaded, baked, beautiful</small></span><span class="price">$18.95</span></div>
+            <div class="menu-item"><span class="name">Lasagna<small>House-made. People drive across town for this.</small></span><span class="price">$17.95</span></div>
+            <div class="menu-item"><span class="name">Fettuccine Alfredo</span><span class="price">$15.95</span></div>
+            <div class="menu-item"><span class="name">Shrimp Scampi</span><span class="price">$21.95</span></div>
+            <div class="menu-item"><span class="name">Eggplant Parmesan<small>Vegetarian</small></span><span class="price">$16.95</span></div>
+        </div>
+        <div class="menu-card">
+            <h3>🥖 Starters & Desserts</h3>
+            <div class="tagline">Start right, finish sweet</div>
+            <div class="menu-item"><span class="name">Bruschetta</span><span class="price">$10.95</span></div>
+            <div class="menu-item"><span class="name">Calamari Fritti</span><span class="price">$13.95</span></div>
+            <div class="menu-item"><span class="name">Meatballs (3)</span><span class="price">$11.95</span></div>
+            <div class="menu-item"><span class="name">Caprese Salad</span><span class="price">$12.95</span></div>
+            <div class="menu-item" style="border-top:2px solid rgba(0,0,0,0.06);margin-top:8px;padding-top:12px;"><span class="name">Tiramisu</span><span class="price">$9.95</span></div>
+            <div class="menu-item"><span class="name">Cannoli (2)</span><span class="price">$8.95</span></div>
+            <div class="menu-item"><span class="name">Gelato</span><span class="price">$6.95</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <h2>Why Napoli's?</h2>
+    <div class="feat-grid">
+        <div class="feat-card">
+            <div class="icon">👨‍🍳</div>
+            <h4>Family Recipes</h4>
+            <p>Three generations of Italian cooking. Grandma's lasagna recipe hasn't changed since 1998.</p>
+        </div>
+        <div class="feat-card">
+            <div class="icon">🔥</div>
+            <h4>Wood-Fired Pizza</h4>
+            <p>900°F stone oven. Neapolitan-style thin crust. Imported San Marzano tomatoes.</p>
+        </div>
+        <div class="feat-card">
+            <div class="icon">🥬</div>
+            <h4>Fresh Daily</h4>
+            <p>Pasta made in-house every morning. Local produce. Nothing frozen, ever.</p>
+        </div>
+        <div class="feat-card">
+            <div class="icon">📞</div>
+            <h4>Order Any Time</h4>
+            <p>Our AI hostess Sofia takes orders and reservations 24/7. No more busy signals.</p>
+        </div>
+    </div>
+</section>
+
+<section class="container review">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;">What Our Guests Say</h2>
+    <div class="review-cards">
+        <div class="review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"The lasagna is genuinely the best I've had outside of Italy. My nonna would approve."</p>
+            <div class="author">— Maria C., Sarasota</div>
+        </div>
+        <div class="review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"We order takeout every Friday. The AI phone thing is actually amazing — faster than waiting on hold."</p>
+            <div class="author">— Jake R., Siesta Key</div>
+        </div>
+        <div class="review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Had our rehearsal dinner here. The catering team was incredible. 45 guests, not a single complaint."</p>
+            <div class="author">— Sarah & Tom M., Bradenton</div>
+        </div>
+    </div>
+</section>
+
+<section id="hours" class="hours-section">
+    <div class="container">
+        <div class="hours-grid">
+            <h2>Hours & Location</h2>
+            <div>
+                <table class="hours-table">
+                    <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+                    <tr><td>Tuesday – Thursday</td><td>11:00 AM – 9:00 PM</td></tr>
+                    <tr><td>Friday – Saturday</td><td>11:00 AM – 10:00 PM</td></tr>
+                    <tr><td>Sunday</td><td>12:00 PM – 8:00 PM</td></tr>
+                </table>
+                <p style="margin-top:16px;color:var(--muted);font-size:0.88rem;">
+                    Closed? No problem. <strong>Our AI hostess Sofia answers 24/7.</strong> Place a takeout order for tomorrow, make a reservation, or ask about the menu — anytime.
+                </p>
+            </div>
+            <div class="location-info">
+                <h3>📍 Find Us</h3>
+                <p>4567 Gulf Gate Drive<br>Sarasota, FL 34231</p>
+                <p>📞 <a href="tel:+19415550287" style="color:var(--primary);font-weight:600;text-decoration:none;">(941) 555-0287</a></p>
+                <p>🅿️ Free parking behind building</p>
+                <p>🚗 DoorDash & Uber Eats available</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <h2>Hungry? Let's Fix That.</h2>
+    <p>Call now to order takeout, or talk to Sofia — our AI hostess who never puts you on hold.</p>
+    <a href="tel:+19415550287" class="btn-hero">🍕 Call to Order</a>
+</section>
+
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Sofia — AI Hostess">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Sofia</h4>
+        <p>Our AI hostess can take your takeout order, make reservations, answer menu questions, and handle catering inquiries — right from your browser.</p>
+        <elevenlabs-convai agent-id="AGENT_ID_PLACEHOLDER"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Hostess Active 24/7
+</div>
+
+<footer>
+    <p>© 2026 Napoli's Italian Kitchen · Sarasota, FL · Powered by <a href="landing.html">Etheus Voice</a></p>
+</footer>
+
+<script>
+function toggleWidget() { document.getElementById('widgetPopup').classList.toggle('open'); }
+document.addEventListener('click', function(e) { if (!e.target.closest('.widget-area')) document.getElementById('widgetPopup').classList.remove('open'); });
+</script>
+</body>
+</html>

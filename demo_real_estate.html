@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suncoast Premier Realty — Sarasota Real Estate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1B4332;
+            --primary-light: #2D6A4F;
+            --accent: #D4A574;
+            --accent-light: #E8C9A0;
+            --bg: #FDFBF7;
+            --surface: #FFFFFF;
+            --text: #1A2332;
+            --muted: #6B7280;
+            --warm: #92400E;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--surface); border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 0 24px;
+        }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto; display: flex;
+            align-items: center; justify-content: space-between; height: 68px;
+        }
+        .logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.3rem; color: var(--primary); }
+        .logo small { font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--muted); display: block; letter-spacing: 2px; text-transform: uppercase; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary); color: #fff; padding: 8px 20px;
+            border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* HERO */
+        .hero {
+            padding: 80px 24px 60px; text-align: center;
+            background: linear-gradient(180deg, var(--bg) 0%, #F5F0E8 100%);
+        }
+        .hero .eyebrow {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent); font-weight: 600; margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.15;
+            color: var(--primary); margin-bottom: 16px;
+        }
+        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 28px; }
+        .hero .phone {
+            font-size: 1.3rem; font-weight: 700; color: var(--primary); margin: 20px 0;
+        }
+        .hero .phone a { color: var(--primary); text-decoration: none; }
+        .btn-primary {
+            display: inline-block; padding: 14px 32px; border-radius: 8px;
+            background: var(--primary); color: #fff; font-weight: 600;
+            text-decoration: none; font-size: 0.95rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+        .btn-outline {
+            display: inline-block; padding: 14px 32px; border-radius: 8px;
+            border: 1.5px solid var(--primary); color: var(--primary);
+            font-weight: 600; text-decoration: none; font-size: 0.95rem;
+        }
+
+        /* AREAS */
+        .areas { padding: 60px 0; }
+        .areas h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; color: var(--primary); }
+        .area-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .area-card {
+            background: var(--surface); border-radius: 12px; padding: 24px;
+            text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+        .area-card:hover { transform: translateY(-4px); }
+        .area-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+        .area-card .range { font-size: 0.82rem; color: var(--accent); font-weight: 600; }
+        .area-card p { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+        /* WHY */
+        .why { padding: 60px 0; background: var(--surface); }
+        .why h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; color: var(--primary); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .why-item { text-align: center; padding: 20px; }
+        .why-item .icon { font-size: 2rem; margin-bottom: 12px; }
+        .why-item h4 { font-weight: 700; margin-bottom: 6px; }
+        .why-item p { font-size: 0.88rem; color: var(--muted); }
+
+        /* SELLER CTA */
+        .seller {
+            padding: 60px 0; text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #fff;
+        }
+        .seller h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+        .seller p { opacity: 0.9; max-width: 560px; margin: 0 auto 24px; }
+        .btn-gold {
+            display: inline-block; padding: 14px 32px; border-radius: 8px;
+            background: var(--accent); color: var(--primary); font-weight: 700;
+            text-decoration: none; font-size: 0.95rem;
+        }
+
+        /* CTA FINAL */
+        .final-cta { padding: 60px 24px; text-align: center; }
+        .final-cta h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 12px; }
+        .final-cta p { color: var(--muted); margin-bottom: 24px; }
+
+        /* AI BADGE */
+        .ai-badge {
+            position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+            background: var(--primary); color: #fff; padding: 12px 20px;
+            border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .ai-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; }
+
+        /* WIDGET */
+        .widget-area { position: fixed; bottom: 24px; left: 24px; z-index: 999; }
+        .widget-btn {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: var(--primary); border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #fff; box-shadow: 0 4px 20px rgba(27,67,50,0.4);
+            transition: transform 0.2s;
+        }
+        .widget-btn:hover { transform: scale(1.1); }
+        .widget-popup {
+            display: none; position: absolute; bottom: 72px; left: 0;
+            background: var(--surface); border-radius: 16px; padding: 24px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 320px;
+        }
+        .widget-popup.open { display: block; }
+        .widget-popup h4 { font-size: 1rem; margin-bottom: 8px; }
+        .widget-popup p { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+        .widget-popup .note {
+            background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 8px;
+            padding: 12px; font-size: 0.8rem; color: var(--primary);
+        }
+
+        footer { padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .area-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">Suncoast Premier<small>Realty — Sarasota FL</small></div>
+        <div class="nav-links">
+            <a href="#areas">Areas</a>
+            <a href="#selling">Selling?</a>
+            <a href="tel:+19415550234" class="nav-cta">📞 (941) 555-0234</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="eyebrow">Boutique Real Estate · Sarasota & Beyond</div>
+    <h1>Find Your Place<br>in Paradise</h1>
+    <p>Sarasota's boutique brokerage. Whether you're buying your first home or selling your waterfront estate, our agents — and our AI — are here for you.</p>
+    <div class="phone">📞 <a href="tel:+19415550234">(941) 555-0234</a></div>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:+19415550234" class="btn-primary">Call Us Now</a>
+        <a href="mailto:info@suncoastpremier.com" class="btn-outline">Email an Agent</a>
+    </div>
+    <p style="margin-top:16px;font-size:0.85rem;color:var(--muted);">
+        Our AI assistant Jessica answers 24/7 — call anytime, even nights & weekends.
+    </p>
+</section>
+
+<section id="areas" class="container areas">
+    <h2>Areas We Know Best</h2>
+    <div class="area-grid">
+        <div class="area-card">
+            <h3>Downtown Sarasota</h3>
+            <div class="range">$300K – $1.5M</div>
+            <p>Condos, townhomes, walkability</p>
+        </div>
+        <div class="area-card">
+            <h3>Siesta Key</h3>
+            <div class="range">$600K – $3M+</div>
+            <p>#1 beach in America</p>
+        </div>
+        <div class="area-card">
+            <h3>Lido Key</h3>
+            <div class="range">$500K – $2.5M</div>
+            <p>Island living, St. Armands Circle</p>
+        </div>
+        <div class="area-card">
+            <h3>Longboat Key</h3>
+            <div class="range">$700K – $5M+</div>
+            <p>Exclusive waterfront estates</p>
+        </div>
+        <div class="area-card">
+            <h3>Lakewood Ranch</h3>
+            <div class="range">$350K – $600K</div>
+            <p>Top master-planned community</p>
+        </div>
+        <div class="area-card">
+            <h3>Gulf Gate / Bee Ridge</h3>
+            <div class="range">$250K – $450K</div>
+            <p>Value, character, close to beach</p>
+        </div>
+        <div class="area-card">
+            <h3>Venice & Osprey</h3>
+            <div class="range">$300K – $800K</div>
+            <p>Charming coastal towns</p>
+        </div>
+        <div class="area-card">
+            <h3>North Port</h3>
+            <div class="range">$220K – $400K</div>
+            <p>Affordable, growing fast</p>
+        </div>
+    </div>
+</section>
+
+<section class="why">
+    <h2>Why Work With Us</h2>
+    <div class="why-grid">
+        <div class="why-item">
+            <div class="icon">🏡</div>
+            <h4>Local Expertise</h4>
+            <p>Born and raised in Sarasota. We know every neighborhood, every school zone, every hidden gem.</p>
+        </div>
+        <div class="why-item">
+            <div class="icon">🤝</div>
+            <h4>Boutique Service</h4>
+            <p>Small team, big attention. You're not a number — you're our neighbor.</p>
+        </div>
+        <div class="why-item">
+            <div class="icon">🤖</div>
+            <h4>AI-Powered Response</h4>
+            <p>Our AI assistant Jessica answers calls 24/7 so no lead waits until Monday morning.</p>
+        </div>
+    </div>
+</section>
+
+<section id="selling" class="seller">
+    <h2>Thinking About Selling?</h2>
+    <p>Get a free, no-obligation market analysis. Our agents will visit your home, review recent sales in your neighborhood, and give you a realistic price range. No pressure.</p>
+    <a href="tel:+19415550234" class="btn-gold">📞 Request Free Market Analysis</a>
+</section>
+
+<section class="final-cta">
+    <h2>Let's Find Your Dream Home</h2>
+    <p>Call or text anytime — our AI assistant Jessica will get you connected with the right agent.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:+19415550234" class="btn-primary">📞 Call (941) 555-0234</a>
+        <a href="mailto:info@suncoastpremier.com" class="btn-outline">Email Us</a>
+    </div>
+</section>
+
+<!-- AI Voice Widget Placeholder -->
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Jessica — AI Assistant">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Jessica</h4>
+        <p>Our AI assistant can answer property questions, schedule showings, and capture your info for an agent callback.</p>
+        <elevenlabs-convai agent-id="agent_8601kjma58pde77sz1sa32f3qq1x"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Assistant Active 24/7
+</div>
+
+<footer>
+    <p>© 2026 Suncoast Premier Realty · Sarasota, FL · Powered by <a href="landing.html">Etheus Voice</a></p>
+</footer>
+
+<script>
+function toggleWidget() {
+    document.getElementById('widgetPopup').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.widget-area')) {
+        document.getElementById('widgetPopup').classList.remove('open');
+    }
+});
+</script>
+
+</body>
+</html>

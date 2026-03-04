@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coastal Property Management — Sarasota Rentals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0D6E6E;
+            --primary-light: #0F8B8D;
+            --accent: #F4A261;
+            --accent-hover: #E76F51;
+            --bg: #F8F9FA;
+            --surface: #FFFFFF;
+            --text: #1A2332;
+            --muted: #5A6B80;
+            --success: #22C55E;
+            --danger: #EF4444;
+            --radius: 16px;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { background: var(--primary); color: #fff; padding: 0 24px; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .logo { font-weight: 800; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+        .logo .icon { font-size: 1.5rem; }
+        .nav-info { display: flex; gap: 24px; font-size: 0.85rem; }
+        .nav-info a { color: rgba(255,255,255,0.85); text-decoration: none; }
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #fff; padding: 60px 24px 80px; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 24px; }
+        .hero .phone { font-size: 1.4rem; font-weight: 700; margin: 20px 0; }
+        .hero .phone a { color: var(--accent); text-decoration: none; }
+        .btn-hero { display: inline-block; padding: 14px 32px; border-radius: 100px; background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 20px rgba(244,162,97,0.3); transition: transform 0.2s; }
+        .btn-hero:hover { transform: translateY(-2px); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .services { padding: 60px 0; }
+        .services h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; }
+        .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .svc-card { background: var(--surface); border-radius: var(--radius); padding: 28px 24px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s; }
+        .svc-card:hover { transform: translateY(-4px); }
+        .svc-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+        .svc-card p { font-size: 0.85rem; color: var(--muted); }
+
+        .listings { padding: 60px 0; background: var(--surface); }
+        .listings h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; }
+        .listing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 960px; margin: 0 auto; }
+        .listing-card { background: var(--bg); border-radius: var(--radius); padding: 28px; border: 2px solid #E5E7EB; }
+        .listing-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .listing-card .price { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 8px 0; }
+        .listing-card .details { font-size: 0.88rem; color: var(--muted); margin-bottom: 12px; }
+        .listing-card ul { list-style: none; font-size: 0.85rem; color: var(--muted); }
+        .listing-card li::before { content: '✓ '; color: var(--success); font-weight: 700; }
+        .listing-card .avail { display: inline-block; margin-top: 12px; padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; background: rgba(34,197,94,0.1); color: var(--success); }
+
+        .hours-section { padding: 60px 0; }
+        .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto; }
+        .hours-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 20px; grid-column: 1 / -1; text-align: center; }
+        .hours-table { width: 100%; }
+        .hours-table td { padding: 8px 0; font-size: 0.92rem; }
+        .hours-table td:first-child { font-weight: 600; }
+        .hours-table td:last-child { text-align: right; color: var(--muted); }
+        .location-info h3 { font-weight: 700; margin-bottom: 12px; }
+        .location-info p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+
+        .cta-banner { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; padding: 48px 24px; text-align: center; }
+        .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+        .cta-banner p { opacity: 0.9; margin-bottom: 20px; }
+
+        .ai-badge { position: fixed; bottom: 24px; right: 24px; z-index: 1000; background: var(--primary); color: #fff; padding: 12px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; animation: pulse 2s ease-in-out infinite; }
+        .ai-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } 50% { box-shadow: 0 4px 30px rgba(13,110,110,0.4); } }
+
+        .widget-area { position: fixed; bottom: 24px; left: 24px; z-index: 999; }
+        .widget-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 20px rgba(244,162,97,0.4); transition: transform 0.2s; }
+        .widget-btn:hover { transform: scale(1.1); }
+        .widget-popup { display: none; position: absolute; bottom: 72px; left: 0; background: var(--surface); border-radius: 16px; padding: 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 320px; }
+        .widget-popup.open { display: block; }
+        .widget-popup h4 { font-size: 1rem; margin-bottom: 8px; }
+        .widget-popup p { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+
+        footer { padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+        @media (max-width: 768px) { .hours-grid, .listing-grid { grid-template-columns: 1fr; } .nav-info { display: none; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo"><span class="icon">🏠</span> Coastal Property Management</div>
+        <div class="nav-info">
+            <a href="tel:+19415550234">📞 (941) 555-0234</a>
+            <a href="#">24/7 Emergency Line</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Property Management<br>You Can Count On.</h1>
+    <p>200+ rental units across Sarasota. 24/7 emergency maintenance. Online tenant portal. Stress-free ownership.</p>
+    <div class="phone">📞 <a href="tel:+19415550234">(941) 555-0234</a></div>
+    <a href="tel:+19415550234" class="btn-hero">Call Us — Tenants & Owners</a>
+</section>
+
+<section class="container services">
+    <h2>What We Handle</h2>
+    <div class="svc-grid">
+        <div class="svc-card">
+            <div class="icon">🔧</div>
+            <h3>Maintenance</h3>
+            <p>24/7 emergency dispatch. Routine repairs within 3-5 days. Licensed contractors.</p>
+        </div>
+        <div class="svc-card">
+            <div class="icon">📋</div>
+            <h3>Leasing</h3>
+            <p>Marketing, showings, screening, and lease signing. Vacancy filled fast.</p>
+        </div>
+        <div class="svc-card">
+            <div class="icon">💰</div>
+            <h3>Rent Collection</h3>
+            <p>Online portal, automatic payments, late fee enforcement. You get paid on time.</p>
+        </div>
+        <div class="svc-card">
+            <div class="icon">📊</div>
+            <h3>Owner Reports</h3>
+            <p>Monthly financials, maintenance logs, and market analysis. Full transparency.</p>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🏗️</div>
+            <h3>Inspections</h3>
+            <p>Move-in, move-out, and quarterly inspections. Protect your investment.</p>
+        </div>
+        <div class="svc-card">
+            <div class="icon">⚖️</div>
+            <h3>Compliance</h3>
+            <p>Fair housing, FL landlord-tenant law, eviction management when needed.</p>
+        </div>
+    </div>
+</section>
+
+<section class="listings">
+    <h2>Available Rentals</h2>
+    <div class="listing-grid">
+        <div class="listing-card">
+            <h3>Sunset Palms — 1BR / 1BA</h3>
+            <div class="price">$1,450<span style="font-size:0.8rem;font-weight:400;color:var(--muted)">/mo</span></div>
+            <div class="details">750 sq ft · Updated kitchen · Pool access</div>
+            <ul>
+                <li>Water, trash, pest control included</li>
+                <li>Dogs under 50 lbs welcome</li>
+                <li>In-unit washer/dryer</li>
+            </ul>
+            <span class="avail">Available Now</span>
+        </div>
+        <div class="listing-card">
+            <h3>Bay Vista — 2BR / 2BA</h3>
+            <div class="price">$1,895<span style="font-size:0.8rem;font-weight:400;color:var(--muted)">/mo</span></div>
+            <div class="details">1,050 sq ft · Bay views · Fitness center</div>
+            <ul>
+                <li>Water, trash, pest control included</li>
+                <li>Dogs under 50 lbs welcome</li>
+                <li>Covered parking</li>
+            </ul>
+            <span class="avail">Available March 15</span>
+        </div>
+        <div class="listing-card">
+            <h3>Gulf Breeze — 3BR / 2BA Townhome</h3>
+            <div class="price">$2,400<span style="font-size:0.8rem;font-weight:400;color:var(--muted)">/mo</span></div>
+            <div class="details">1,400 sq ft · Private patio · 2-car garage</div>
+            <ul>
+                <li>Water, trash, pest control included</li>
+                <li>Dogs under 50 lbs welcome</li>
+                <li>Fenced yard</li>
+            </ul>
+            <span class="avail">Available April 1</span>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding:60px 0;">
+    <div class="hours-grid">
+        <h2>Office Hours & Location</h2>
+        <div>
+            <table class="hours-table">
+                <tr><td>Monday – Friday</td><td>9:00 AM – 5:00 PM</td></tr>
+                <tr><td>Saturday</td><td>10:00 AM – 2:00 PM</td></tr>
+                <tr><td>Sunday</td><td>Closed</td></tr>
+                <tr><td style="color:var(--success);font-weight:700">Emergency Line</td><td style="text-align:right;color:var(--success);font-weight:700">24/7</td></tr>
+            </table>
+            <p style="margin-top:16px;color:var(--muted);font-size:0.88rem;">
+                After hours? <strong>Our AI receptionist Maria answers 24/7.</strong> Report emergencies, submit maintenance requests, or ask about available units — any time.
+            </p>
+        </div>
+        <div class="location-info">
+            <h3>📍 Find Us</h3>
+            <p>456 Palm Avenue<br>Sarasota, FL 34236</p>
+            <p>📞 <a href="tel:+19415550234" style="color:var(--primary);font-weight:600;text-decoration:none;">(941) 555-0234</a></p>
+            <p>📧 info@coastalpm.com</p>
+            <p>🌐 portal.coastalpm.com</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <h2>Maintenance Emergency?</h2>
+    <p>Water leak, no A/C, lockout? Call any time — our AI assistant will dispatch help and give you a reference number immediately.</p>
+    <a href="tel:+19415550234" class="btn-hero">🚨 Report Emergency Now</a>
+</section>
+
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Maria — AI Receptionist">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Maria</h4>
+        <p>Our AI receptionist can handle maintenance requests, answer leasing questions, and dispatch emergencies — right from your browser.</p>
+        <elevenlabs-convai agent-id="AGENT_ID_PLACEHOLDER"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Receptionist Active 24/7
+</div>
+
+<footer>
+    <p>© 2026 Coastal Property Management · Sarasota, FL · Powered by <a href="landing.html" style="color:var(--primary);font-weight:600;">Etheus Voice</a></p>
+</footer>
+
+<script>
+function toggleWidget() { document.getElementById('widgetPopup').classList.toggle('open'); }
+document.addEventListener('click', function(e) { if (!e.target.closest('.widget-area')) document.getElementById('widgetPopup').classList.remove('open'); });
+</script>
+</body>
+</html>

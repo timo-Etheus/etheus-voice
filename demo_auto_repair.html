@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulf Coast Auto Repair — Sarasota's Trusted Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1E3A5F;
+            --primary-light: #2D5F8B;
+            --accent: #F59E0B;
+            --accent-hover: #D97706;
+            --bg: #F8F9FA;
+            --surface: #FFFFFF;
+            --text: #1A2332;
+            --muted: #5A6B80;
+            --success: #22C55E;
+            --danger: #EF4444;
+            --radius: 16px;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--primary); color: #fff; padding: 0 24px;
+        }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto; display: flex;
+            align-items: center; justify-content: space-between; height: 64px;
+        }
+        .logo { font-weight: 800; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+        .logo .icon { font-size: 1.5rem; }
+        .nav-info { display: flex; gap: 24px; font-size: 0.85rem; }
+        .nav-info a { color: rgba(255,255,255,0.85); text-decoration: none; }
+        .nav-info a:hover { color: #fff; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #fff; padding: 60px 24px 80px; text-align: center;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 16px;
+        }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 24px; }
+        .hero .phone {
+            font-size: 1.4rem; font-weight: 700; margin: 20px 0;
+        }
+        .hero .phone a { color: var(--accent); text-decoration: none; }
+        .btn-hero {
+            display: inline-block; padding: 14px 32px; border-radius: 100px;
+            background: var(--accent); color: var(--primary); font-weight: 700;
+            text-decoration: none; font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(245,158,11,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,158,11,0.4); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* SERVICES */
+        .services { padding: 60px 0; }
+        .services h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 32px; }
+        .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .svc-card {
+            background: var(--surface); border-radius: var(--radius);
+            padding: 28px 24px; text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .svc-card:hover { transform: translateY(-4px); }
+        .svc-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+        .svc-card p { font-size: 0.85rem; color: var(--muted); }
+        .svc-card .price { color: var(--accent-hover); font-weight: 700; font-size: 0.9rem; margin-top: 8px; }
+
+        /* HOURS */
+        .hours-section { padding: 60px 0; background: var(--surface); }
+        .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto; }
+        .hours-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 20px; grid-column: 1 / -1; text-align: center; }
+        .hours-table { width: 100%; }
+        .hours-table td { padding: 8px 0; font-size: 0.92rem; }
+        .hours-table td:first-child { font-weight: 600; }
+        .hours-table td:last-child { text-align: right; color: var(--muted); }
+        .location-info h3 { font-weight: 700; margin-bottom: 12px; }
+        .location-info p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff; padding: 48px 24px; text-align: center;
+        }
+        .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+        .cta-banner p { opacity: 0.9; margin-bottom: 20px; }
+
+        /* AI BADGE */
+        .ai-badge {
+            position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+            background: var(--primary); color: #fff; padding: 12px 20px;
+            border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: flex; align-items: center; gap: 8px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .ai-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 4px 30px rgba(30,58,95,0.4); }
+        }
+
+        /* WIDGET PLACEHOLDER */
+        .widget-area {
+            position: fixed; bottom: 24px; left: 24px; z-index: 999;
+        }
+        .widget-btn {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: var(--accent); border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+            transition: transform 0.2s;
+        }
+        .widget-btn:hover { transform: scale(1.1); }
+        .widget-popup {
+            display: none; position: absolute; bottom: 72px; left: 0;
+            background: var(--surface); border-radius: 16px; padding: 24px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 320px;
+        }
+        .widget-popup.open { display: block; }
+        .widget-popup h4 { font-size: 1rem; margin-bottom: 8px; }
+        .widget-popup p { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+        .widget-popup .note {
+            background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 8px;
+            padding: 12px; font-size: 0.8rem; color: #92400E;
+        }
+
+        footer { padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hours-grid { grid-template-columns: 1fr; }
+            .nav-info { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo"><span class="icon">🔧</span> Gulf Coast Auto Repair</div>
+        <div class="nav-info">
+            <a href="tel:+19415550199">📞 (941) 555-0199</a>
+            <a href="#">Mon–Fri 7:30AM–5:30PM</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Honest Auto Repair.<br>Sarasota's Trusted Shop Since 2008.</h1>
+    <p>From oil changes to engine overhauls — we fix it right the first time. Family owned, ASE-certified, and always fair.</p>
+    <div class="phone">📞 <a href="tel:+19415550199">(941) 555-0199</a></div>
+    <a href="tel:+19415550199" class="btn-hero">Call to Book Service</a>
+</section>
+
+<section class="container services">
+    <h2>What We Do</h2>
+    <div class="svc-grid">
+        <div class="svc-card">
+            <div class="icon">🛢️</div>
+            <h3>Oil Changes</h3>
+            <p>Conventional & synthetic. In and out in 30 minutes.</p>
+            <div class="price">From $39.95</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🛞</div>
+            <h3>Brake Service</h3>
+            <p>Inspection, pads, rotors, fluid flush. Free brake checks.</p>
+            <div class="price">Free Inspection</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🔍</div>
+            <h3>Diagnostics</h3>
+            <p>Check engine light? We'll find it. Fee waived with repair.</p>
+            <div class="price">$89.95 (waived w/ repair)</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">❄️</div>
+            <h3>A/C Repair</h3>
+            <p>Recharge, leak repair, full system overhaul.</p>
+            <div class="price">Free Estimate</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">⚙️</div>
+            <h3>Engine & Transmission</h3>
+            <p>Full repair and rebuild services. All makes and models.</p>
+            <div class="price">Free Estimate</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🔋</div>
+            <h3>Battery & Electrical</h3>
+            <p>Testing, replacement, alternator and starter repair.</p>
+            <div class="price">Free Test</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🚗</div>
+            <h3>Pre-Purchase Inspection</h3>
+            <p>Buying a used car? Let us check it first.</p>
+            <div class="price">$99.95</div>
+        </div>
+        <div class="svc-card">
+            <div class="icon">🚛</div>
+            <h3>Fleet Maintenance</h3>
+            <p>Keep your business fleet on the road. Volume discounts.</p>
+            <div class="price">Call for Pricing</div>
+        </div>
+    </div>
+</section>
+
+<section class="hours-section">
+    <div class="container">
+        <div class="hours-grid">
+            <h2>Hours & Location</h2>
+            <div>
+                <table class="hours-table">
+                    <tr><td>Monday – Friday</td><td>7:30 AM – 5:30 PM</td></tr>
+                    <tr><td>Saturday</td><td>8:00 AM – 1:00 PM</td></tr>
+                    <tr><td>Sunday</td><td>Closed</td></tr>
+                </table>
+                <p style="margin-top:16px;color:var(--muted);font-size:0.88rem;">
+                    After hours? <strong>Our AI receptionist Sarah answers 24/7.</strong> Call anytime to book, check on your car, or request towing.
+                </p>
+            </div>
+            <div class="location-info">
+                <h3>📍 Find Us</h3>
+                <p>1234 Main Street<br>Sarasota, FL 34236</p>
+                <p>📞 <a href="tel:+19415550199" style="color:var(--primary);font-weight:600;text-decoration:none;">(941) 555-0199</a></p>
+                <p>📧 info@gulfcoastautorepair.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <h2>Broke Down? Need a Tow?</h2>
+    <p>Call us any time — day or night. Our AI assistant will dispatch a tow truck to your location in 30–45 minutes.</p>
+    <a href="tel:+19415550199" class="btn-hero">🚨 Call Now for Emergency Towing</a>
+</section>
+
+<!-- AI Voice Widget Placeholder -->
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Sarah — AI Receptionist">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Sarah</h4>
+        <p>Our AI receptionist can book appointments, answer questions, and help with emergencies — right from your browser.</p>
+        <elevenlabs-convai agent-id="agent_7901kjma51qqfvms77dv34s61zm6"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Receptionist Active 24/7
+</div>
+
+<footer>
+    <p>© 2026 Gulf Coast Auto Repair · Sarasota, FL · Powered by <a href="landing.html" style="color:var(--primary);font-weight:600;">Etheus Voice</a></p>
+</footer>
+
+<script>
+function toggleWidget() {
+    document.getElementById('widgetPopup').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.widget-area')) {
+        document.getElementById('widgetPopup').classList.remove('open');
+    }
+});
+</script>
+
+</body>
+</html>

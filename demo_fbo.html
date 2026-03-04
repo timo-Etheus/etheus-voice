@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyway Aviation Services — FBO at Sarasota (KSRQ)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --navy:#0C1B2A;--navy-light:#152D47;--sky:#38B6FF;
+            --sky-dim:rgba(56,182,255,0.1);--gold:#D4A84B;
+            --bg:#F4F6F9;--surface:#FFFFFF;--text:#1A2332;--muted:#5A6B80;
+            --green:#22C55E;--red:#EF4444;
+        }
+        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+        .container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+        /* NAV */
+        nav{background:var(--navy);padding:0 24px}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+        .logo{color:#fff;font-weight:800;font-size:1.1rem;display:flex;align-items:center;gap:10px}
+        .logo .icao{background:var(--sky);color:var(--navy);font-size:0.7rem;font-weight:800;padding:3px 8px;border-radius:4px;letter-spacing:1px}
+        .nav-info{display:flex;gap:20px;font-size:0.82rem}
+        .nav-info a{color:rgba(255,255,255,0.8);text-decoration:none}
+        .nav-info a:hover{color:#fff}
+
+        /* HERO */
+        .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff;padding:64px 24px 72px;text-align:center;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(56,182,255,0.08),transparent 70%);pointer-events:none}
+        .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);margin-bottom:14px}
+        .hero p{font-size:1.05rem;opacity:0.85;max-width:560px;margin:0 auto 20px}
+        .hero .phone{font-size:1.3rem;font-weight:700;margin:16px 0}
+        .hero .phone a{color:var(--sky);text-decoration:none}
+        .badge-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+        .badge{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:6px 16px;border-radius:100px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.8)}
+        .badge .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px}
+
+        /* FUEL */
+        .fuel{padding:48px 0}
+        .fuel h2{font-family:'Playfair Display',serif;font-size:1.6rem;text-align:center;margin-bottom:28px}
+        .fuel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+        .fuel-card{background:var(--surface);border-radius:14px;padding:24px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+        .fuel-card .type{font-weight:800;font-size:1.1rem;margin-bottom:4px}
+        .fuel-card .method{font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+        .fuel-card .price{font-size:2rem;font-weight:800;color:var(--navy)}
+        .fuel-card .price span{font-size:0.9rem;font-weight:400;color:var(--muted)}
+        .fuel-card .note{font-size:0.78rem;color:var(--muted);margin-top:6px}
+
+        /* SERVICES */
+        .services{padding:48px 0;background:var(--surface)}
+        .services h2{font-family:'Playfair Display',serif;font-size:1.6rem;text-align:center;margin-bottom:28px}
+        .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:900px;margin:0 auto}
+        .svc{text-align:center;padding:20px 16px}
+        .svc .icon{font-size:1.8rem;margin-bottom:8px}
+        .svc h4{font-weight:700;font-size:0.92rem;margin-bottom:4px}
+        .svc p{font-size:0.8rem;color:var(--muted)}
+        .svc .price-tag{font-weight:700;color:var(--navy);font-size:0.85rem;margin-top:6px}
+
+        /* PARKING */
+        .parking{padding:48px 0}
+        .parking h2{font-family:'Playfair Display',serif;font-size:1.6rem;text-align:center;margin-bottom:28px}
+        .park-table{width:100%;max-width:700px;margin:0 auto;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+        .park-table th,.park-table td{padding:14px 20px;text-align:left;border-bottom:1px solid #f0f0f0}
+        .park-table th{background:#f8f9fa;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+        .park-table td:last-child{text-align:right;font-weight:700;color:var(--navy)}
+        .park-table tr:last-child td{border-bottom:none}
+        .park-note{text-align:center;margin-top:16px;font-size:0.85rem;color:var(--muted)}
+        .park-note strong{color:var(--green)}
+
+        /* HOURS */
+        .hours{padding:48px 0;background:var(--surface)}
+        .hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:800px;margin:0 auto}
+        .hours h2{font-family:'Playfair Display',serif;font-size:1.6rem;text-align:center;margin-bottom:28px;grid-column:1/-1}
+        .hours-list{list-style:none}
+        .hours-list li{padding:8px 0;font-size:0.92rem;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0}
+        .hours-list li:last-child{border-bottom:none}
+        .hours-list .day{font-weight:600}
+        .hours-list .time{color:var(--muted)}
+        .contact-info p{font-size:0.92rem;color:var(--muted);margin-bottom:10px}
+        .contact-info a{color:var(--navy);font-weight:600;text-decoration:none}
+
+        /* AFTER-HOURS CTA */
+        .after-hours{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:48px 24px;text-align:center}
+        .after-hours h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:10px}
+        .after-hours p{opacity:0.85;max-width:540px;margin:0 auto 20px}
+        .btn-cta{display:inline-block;padding:14px 32px;border-radius:8px;background:var(--sky);color:var(--navy);font-weight:700;text-decoration:none;font-size:0.95rem;transition:transform 0.2s}
+        .btn-cta:hover{transform:translateY(-2px)}
+
+        /* AMENITIES */
+        .amenities{padding:48px 0}
+        .amenities h2{font-family:'Playfair Display',serif;font-size:1.6rem;text-align:center;margin-bottom:28px}
+        .amen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;max-width:800px;margin:0 auto}
+        .amen{background:var(--surface);border-radius:10px;padding:16px;text-align:center;font-size:0.85rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+        .amen .icon{font-size:1.4rem;margin-bottom:6px}
+
+        /* AI BADGE */
+        .ai-badge{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;padding:12px 20px;border-radius:100px;font-size:0.8rem;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.3);display:flex;align-items:center;gap:8px}
+        .ai-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
+
+        /* WIDGET */
+        .widget-area{position:fixed;bottom:24px;left:24px;z-index:999}
+        .widget-btn{width:60px;height:60px;border-radius:50%;background:var(--sky);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(56,182,255,0.4);transition:transform 0.2s}
+        .widget-btn:hover{transform:scale(1.1)}
+        .widget-popup{display:none;position:absolute;bottom:72px;left:0;background:var(--surface);border-radius:16px;padding:24px;box-shadow:0 8px 40px rgba(0,0,0,0.15);width:320px}
+        .widget-popup.open{display:block}
+        .widget-popup h4{font-size:1rem;margin-bottom:8px}
+        .widget-popup p{font-size:0.85rem;color:var(--muted);margin-bottom:16px}
+        .widget-popup .note{background:var(--sky-dim);border:1px solid rgba(56,182,255,0.2);border-radius:8px;padding:12px;font-size:0.8rem;color:var(--navy)}
+
+        footer{padding:32px 24px;text-align:center;color:var(--muted);font-size:0.78rem}
+        footer a{color:var(--navy);text-decoration:none;font-weight:600}
+
+        @media(max-width:768px){
+            .hours-grid{grid-template-columns:1fr}
+            .nav-info{display:none}
+            .fuel-grid{grid-template-columns:repeat(2,1fr)}
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">✈️ Skyway Aviation <span class="icao">KSRQ</span></div>
+        <div class="nav-info">
+            <a href="tel:+19415550777">📞 (941) 555-0777</a>
+            <a href="#">Open 6AM–10PM Daily</a>
+            <a href="#">Sarasota–Bradenton Intl</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Sarasota's Premier FBO</h1>
+    <p>Full-service fuel, hangars, ramp services, and pilot amenities at KSRQ. AI receptionist answers 24/7 — even for 2 AM diverts.</p>
+    <div class="phone">📞 <a href="tel:+19415550777">(941) 555-0777</a></div>
+    <div class="badge-row">
+        <div class="badge"><span class="dot"></span> AI Receptionist 24/7</div>
+        <div class="badge">⛽ Jet-A & 100LL</div>
+        <div class="badge">🅿️ Transient Parking</div>
+        <div class="badge">🚗 Crew Cars</div>
+    </div>
+</section>
+
+<!-- FUEL PRICING -->
+<section class="container fuel">
+    <h2>Fuel Pricing</h2>
+    <div class="fuel-grid">
+        <div class="fuel-card">
+            <div class="type">Jet-A</div>
+            <div class="method">Full Service</div>
+            <div class="price">$6.50<span>/gal</span></div>
+            <div class="note">Fuel truck to your aircraft</div>
+        </div>
+        <div class="fuel-card">
+            <div class="type">Jet-A</div>
+            <div class="method">Self Serve</div>
+            <div class="price">$5.85<span>/gal</span></div>
+            <div class="note">24/7 at self-serve island</div>
+        </div>
+        <div class="fuel-card">
+            <div class="type">100LL</div>
+            <div class="method">Full Service</div>
+            <div class="price">$7.50<span>/gal</span></div>
+            <div class="note">Available during FBO hours</div>
+        </div>
+        <div class="fuel-card">
+            <div class="type">100LL</div>
+            <div class="method">Self Serve</div>
+            <div class="price">$6.75<span>/gal</span></div>
+            <div class="note">24/7 at self-serve island</div>
+        </div>
+    </div>
+    <p class="park-note">Volume discount on 500+ gallons · We accept World Fuel, Avfuel, Signature Select, Phillips 66</p>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+    <div class="container">
+        <h2>Ramp & Ground Services</h2>
+        <div class="svc-grid">
+            <div class="svc">
+                <div class="icon">🔌</div>
+                <h4>GPU</h4>
+                <p>Ground power for turbine aircraft</p>
+                <div class="price-tag">$50 / free for tenants</div>
+            </div>
+            <div class="svc">
+                <div class="icon">🚽</div>
+                <h4>Lav Service</h4>
+                <p>Schedule 1 hour in advance</p>
+                <div class="price-tag">$75 transient</div>
+            </div>
+            <div class="svc">
+                <div class="icon">🚗</div>
+                <h4>Crew Cars</h4>
+                <p>3 vehicles, complimentary w/ fuel</p>
+                <div class="price-tag">Free (200+ gal) / $75 day</div>
+            </div>
+            <div class="svc">
+                <div class="icon">🍽️</div>
+                <h4>Catering</h4>
+                <p>Box lunch to premium, 4hr notice</p>
+                <div class="price-tag">From $15/person</div>
+            </div>
+            <div class="svc">
+                <div class="icon">❄️</div>
+                <h4>Deicing</h4>
+                <p>Type I & IV, Nov–Mar</p>
+                <div class="price-tag">From $15/gal applied</div>
+            </div>
+            <div class="svc">
+                <div class="icon">🧲</div>
+                <h4>Towing</h4>
+                <p>To/from hangar or ramp</p>
+                <div class="price-tag">$50 / free for tenants</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PARKING TABLE -->
+<section class="container parking">
+    <h2>Transient Parking & Hangars</h2>
+    <table class="park-table">
+        <thead>
+            <tr><th>Aircraft</th><th>Type</th><th>Rate</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Single-Engine</td><td>Tie-down</td><td>$25/night</td></tr>
+            <tr><td>Multi / Turboprop</td><td>Tie-down</td><td>$35/night</td></tr>
+            <tr><td>Jet</td><td>Tie-down</td><td>$50/night</td></tr>
+            <tr><td>Jet</td><td>Ramp (no tie-down)</td><td>$75/night</td></tr>
+            <tr><td>T-Hangar (SE)</td><td>Monthly lease</td><td>$500/mo</td></tr>
+            <tr><td>T-Hangar (ME)</td><td>Monthly lease</td><td>$650/mo</td></tr>
+            <tr><td>Box Hangar</td><td>Monthly lease</td><td>$800–2,500/mo</td></tr>
+        </tbody>
+    </table>
+    <p class="park-note"><strong>Fuel waiver:</strong> Overnight fee waived with 200 gal Jet-A or 50 gal 100LL purchase · Weekly: 5 nights for price of 4</p>
+</section>
+
+<!-- AMENITIES -->
+<section class="container amenities">
+    <h2>Pilot Amenities</h2>
+    <div class="amen-grid">
+        <div class="amen"><div class="icon">☕</div>Coffee & Snacks</div>
+        <div class="amen"><div class="icon">📶</div>Free Wi-Fi</div>
+        <div class="amen"><div class="icon">🛋️</div>Pilot Lounge</div>
+        <div class="amen"><div class="icon">🚿</div>Showers</div>
+        <div class="amen"><div class="icon">🛏️</div>Crew Rest Room</div>
+        <div class="amen"><div class="icon">📺</div>TV & Flight Planning</div>
+        <div class="amen"><div class="icon">🏢</div>Conference Room</div>
+        <div class="amen"><div class="icon">🐕</div>Pet Friendly</div>
+    </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours">
+    <div class="container">
+        <div class="hours-grid">
+            <h2>Hours & Contact</h2>
+            <div>
+                <ul class="hours-list">
+                    <li><span class="day">Monday – Sunday</span><span class="time">6:00 AM – 10:00 PM</span></li>
+                    <li><span class="day">Self-Serve Fuel</span><span class="time">24/7</span></li>
+                    <li><span class="day">After-Hours Call-Out</span><span class="time">24/7 (surcharge applies)</span></li>
+                    <li><span class="day">Holidays</span><span class="time">Open, reduced staff</span></li>
+                </ul>
+            </div>
+            <div class="contact-info">
+                <p><strong>📍 Location</strong></p>
+                <p>8101 N Tamiami Trail<br>Sarasota, FL 34243</p>
+                <p>📞 <a href="tel:+19415550777">(941) 555-0777</a></p>
+                <p>📧 <a href="mailto:ops@skywayaviation.com">ops@skywayaviation.com</a></p>
+                <p style="margin-top:16px;font-size:0.85rem;color:var(--green);font-weight:600;">
+                    ✅ AI receptionist Rachel answers 24/7
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AFTER-HOURS CTA -->
+<section class="after-hours">
+    <h2>After-Hours? Divert? We've Got You.</h2>
+    <p>Our AI receptionist handles fuel call-outs, emergency diverts, and ground transportation — any time, day or night. No voicemail. No waiting.</p>
+    <a href="tel:+19415550777" class="btn-cta">📞 Call Skyway Aviation Now</a>
+</section>
+
+<!-- AI VOICE WIDGET -->
+<div class="widget-area">
+    <button class="widget-btn" onclick="toggleWidget()" title="Talk to Rachel — AI Receptionist">🎙️</button>
+    <div class="widget-popup" id="widgetPopup">
+        <h4>🎙️ Talk to Rachel</h4>
+        <p>Our AI receptionist can handle fuel orders, parking reservations, and service requests — right from your browser.</p>
+        <elevenlabs-convai agent-id="agent_5201kjma5exyeeqap0bptc1wgnhf"></elevenlabs-convai>
+        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    </div>
+</div>
+
+<div class="ai-badge">
+    <div class="dot"></div>
+    AI Receptionist 24/7
+</div>
+
+<footer>
+    <p>© 2026 Skyway Aviation Services · KSRQ · Powered by <a href="landing.html">Etheus Voice</a></p>
+</footer>
+
+<script>
+function toggleWidget(){document.getElementById('widgetPopup').classList.toggle('open')}
+document.addEventListener('click',function(e){if(!e.target.closest('.widget-area'))document.getElementById('widgetPopup').classList.remove('open')})
+</script>
+
+</body>
+</html>
